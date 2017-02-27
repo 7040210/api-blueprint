@@ -718,6 +718,37 @@ Defined by the `Schema` keyword in Markdown list entity.
 #### Description
 Specifies a validation schema for the HTTP message-body of parent payload section.
 
+#### Example
+
+Following example uses [Body section](#def-body-section) to provide an example of an `application/json` payload, and [Schema section](#def-schema-section) to provide a [JSON Schema](http://json-schema.org/) describing all possible valid shapes of the payload.
+
+```apib
++ Response 200 (application/json)
+    + Body
+
+            {"message": "Hello world!"}
+        
+    + Schema
+    
+            {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+```
+
+Essentially the same can be expressed using the [Attributes section](#def-attributes-section):
+
+```apib
++ Response 200 (application/json)
+    + Attributes
+        + message: Hello world! (string)
+```
+
 ---
 
 <a name="def-action-section"></a>
